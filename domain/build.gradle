@@ -3,6 +3,8 @@ apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.kotlin.jdk
+    implementation deps.network.gson
 }
 
 sourceCompatibility = "7"
