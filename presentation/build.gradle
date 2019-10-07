@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "de.mannodermaus.android-junit5"
 
 android {
     compileSdkVersion versions.compileSdkVersion
@@ -17,5 +18,34 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    dependencies {
+        implementation project(':data')
+        implementation project(':domain')
+
+        // Android
+        implementation deps.androidx.appcompat
+        implementation deps.androidx.core
+        implementation deps.androidx.constraintlayout
+
+        // Reactive
+        implementation deps.rx.android
+        implementation deps.rx.java
+        implementation deps.rx.kotlin
+
+        // di
+        implementation deps.koin.core
+        implementation deps.koin.android
+
+        // Log
+        implementation deps.timber
+
+        // test
+        testImplementation deps.test.runner
+        testImplementation deps.test.spek.dsl
+        testImplementation deps.test.spek.runner
+        testImplementation deps.test.mockito
+        testImplementation deps.koin.test
+        testImplementation deps.kotlin.reflect
     }
 }
